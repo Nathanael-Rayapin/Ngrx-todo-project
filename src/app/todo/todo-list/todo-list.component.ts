@@ -3,15 +3,19 @@ import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { TodoService } from '../toto.service';
 import { Todo } from '../toto.model';
+// Ngrx Store
 import * as fromTodoReducers from '../todo.reducer';
 import * as fromTodoActions from '../todo.action';
+import * as fromTodoSelectors from '../todo.selectors';
 
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
 })
 export class TodoListComponent {
-  todoState$: Observable<fromTodoReducers.State>;
+  todo$: Observable<Todo[]>;
+  count$: Observable<number>;
+
   isEdit = false;
   name: string;
   selectedTodo: Todo;
@@ -20,7 +24,8 @@ export class TodoListComponent {
     private todoService: TodoService,
     private store: Store<{ todo: fromTodoReducers.State }>
   ) {
-    this.todoState$ = store.pipe(select('todo'));
+    this.todo$ = store.pipe(select(fromTodoSelectors.selectAll));
+    this.count$ = store.pipe(select(fromTodoSelectors.selectTotalLength));
   }
 
   // Add Todo
