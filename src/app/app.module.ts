@@ -6,6 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { TodoListComponent } from './todo/todo-list/todo-list.component';
 import { TodoInfoComponent } from './todo/todo-info/todo-info.component';
+import { StoreModule } from '@ngrx/store';
+import { todoReducer } from './todo/todo.reducer';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import { TodoInfoComponent } from './todo/todo-info/todo-info.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    StoreModule.forRoot({ todo: todoReducer })
   ],
   providers: [],
   bootstrap: [AppComponent]
