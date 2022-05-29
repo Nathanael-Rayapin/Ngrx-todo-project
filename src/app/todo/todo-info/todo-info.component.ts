@@ -3,6 +3,7 @@ import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { TodoService } from '../toto.service';
 import * as fromTodoReducers from '../todo.reducer';
+import * as fromTodoActions from '../todo.action';
 
 @Component({
   selector: 'app-todo-info',
@@ -19,7 +20,7 @@ export class TodoInfoComponent {
   }
 
   deleteAllTodos(): void {
-    this.store.dispatch({ type: 'DELETE_ALL_TODOS' });
+    this.store.dispatch(new fromTodoActions.DeleteAllTodo());
   }
 
 }
