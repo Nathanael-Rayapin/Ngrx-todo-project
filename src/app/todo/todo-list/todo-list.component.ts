@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { TodoService } from '../toto.service';
-import { Todo } from '../toto.model';
+import { Todo } from '../todo.model';
 // Ngrx Store
-import * as fromTodoReducers from '../todo.reducer';
-import * as fromTodoActions from '../todo.action';
-import * as fromTodoSelectors from '../todo.selectors';
+import { TodoFeatureStoreActions } from '../todo-feature-store';
+import { TodoFeatureStoreSelectors } from '../todo-feature-store';
+import { TodoFeatureStoreState } from '../todo-feature-store';
 
 @Component({
   selector: 'app-todo-list',
@@ -21,17 +20,16 @@ export class TodoListComponent {
   selectedTodo: Todo;
 
   constructor(
-    private todoService: TodoService,
-    private store: Store<{ todo: fromTodoReducers.State }>
+    private store: Store<{ todo: TodoFeatureStoreState.State }>
   ) {
-    this.todo$ = store.pipe(select(fromTodoSelectors.selectAll));
-    this.count$ = store.pipe(select(fromTodoSelectors.selectTotalLength));
+    this.todo$ = store.pipe(select(TodoFeatureStoreSelectors.selectAll));
+    this.count$ = store.pipe(select(TodoFeatureStoreSelectors.selectTotalLength));
   }
 
   // Add Todo
   addTodo(name: string): void {
     const todo: Todo = new Todo(name);
-    this.store.dispatch(new fromTodoActions.AddTodo(todo));
+    this.store.dispatch(new TodoFeatureStoreActions.AddTodo(todo));
     this.name = '';
   }
 
@@ -44,13 +42,13 @@ export class TodoListComponent {
 
   confirmTodo(name: string): void {
     this.selectedTodo = { ...this.selectedTodo, name };
-    this.store.dispatch(new fromTodoActions.UpdateTodo({ id: this.selectedTodo.id, changes: this.selectedTodo }));
+    this.store.dispatch(new TodoFeatureStoreActions.UpdateTodo({ id: this.selectedTodo.id, changes: this.selectedTodo }));
     this.isEdit = false;
     this.name = '';
   }
 
   // Delete Todo
   deleteTodo(todo: Todo): void {
-    this.store.dispatch(new fromTodoActions.DeleteTodo(todo.id));
+    this.store.dispatch(new TodoFeatureStoreActions.DeleteTodo(todo.id));
   }
 }
