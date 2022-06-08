@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import * as fromTodoReducers from './todo/todo.reducer';
-import * as fromTodoActions from './todo/todo.action';
+import * as fromTodoReducers from './todo/todo-feature-store/state';
+import * as fromTodoActions from './todo/todo-feature-store/action';
 
 @Component({
   selector: 'app-root',
