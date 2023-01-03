@@ -29,20 +29,19 @@ Seen in this project :
 [Clone a repo](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) /
 [Fork a repo](https://docs.github.com/en/get-started/quickstart/fork-a-repo)
 
-2 Run dev server :
-```
-ng serve
-``` 
-Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-3 Install all depencencies :
+2 Install all depencencies :
 ```
 npm install
 ```
-To make sur you everything work correctly.
 
-4 Don't forget to execute the Fake Rest API :
+3 Don't forget to execute the Fake Rest API :
 ```
 npm run db
 ```
 Se package.json for more informations.
+
+4 Run dev server :
+```
+ng serve
+``` 
+Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
