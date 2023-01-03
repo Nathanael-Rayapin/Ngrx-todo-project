@@ -27,7 +27,7 @@ Seen in this project :
 
 1 - Clone or Fork the project :
 [Clone a repo](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) /
-[Forke a repo](https://docs.github.com/en/get-started/quickstart/fork-a-repo)
+[Fork a repo](https://docs.github.com/en/get-started/quickstart/fork-a-repo)
 
 2 Run dev server :
 ```
